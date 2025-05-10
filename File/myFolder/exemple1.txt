@@ -1,0 +1,1 @@
+Bomjour,ceci est un exemple d'ecriture dans un fichier
