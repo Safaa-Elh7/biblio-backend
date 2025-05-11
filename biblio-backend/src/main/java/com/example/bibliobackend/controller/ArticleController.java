@@ -41,6 +41,16 @@ public class ArticleController {
         }
         return ResponseEntity.ok(articles);
     }
+    @GetMapping("/search")
+    public ResponseEntity<?> searchByTitre(@RequestParam String titre) {
+        List<Article> articles = service.searchByTitre(titre);
+        if (articles.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Aucun article trouvé avec ce titre.");
+        }
+        return ResponseEntity.ok(articles);
+    }
+
     @PutMapping("/{id}")
     public Article update(@PathVariable Long id, @RequestBody Article updatedArticle) {
         return service.updateArticle(id, updatedArticle);

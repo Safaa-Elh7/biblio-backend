@@ -39,6 +39,10 @@ public class ArticleService {
                 .orElseThrow(() -> new ResourceNotFoundException("Article with id " + id + " not found"));
 
     }
+    public List<Article> searchByTitre(String titre) {
+        return repository.findByTitreContainingIgnoreCase(titre);
+    }
+
     public List<Article> getByAuteur(String auteur) {
         return repository.findByAuteur(auteur);
     }
